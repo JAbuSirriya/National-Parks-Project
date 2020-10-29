@@ -2,7 +2,7 @@
   "name": "national-parks-project",
   "version": "1.0.0",
   "engines": {
-    "node": "10.11.0"
+    "node": "14.11.0"
   },
   "description": "",
   "main": "server.js",
