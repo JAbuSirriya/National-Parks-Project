@@ -7,8 +7,11 @@ const mongoose = require ('mongoose');
 const app = express ();
 const db = mongoose.connection;
 
-
-const parksController = require('./controllers/parks.js');
+//CONTROLLER
+const parksController = require('./controllers/parks_controllers.js');
+app.use(parksController);
+const userController = require('./controllers/users_controller.js')
+app.use('/users', userController)
 //___________________
 //Port
 //___________________
@@ -50,7 +53,7 @@ app.use(methodOverride('_method'));// allow POST, PUT and DELETE from a form
 //___________________
 // Routes
 //___________________
-app.use(parksController);
+
 
 
 app.get('/', (req, res) => {
