@@ -8,7 +8,7 @@ const app = express ();
 const db = mongoose.connection;
 
 //CONTROLLER
-const parksController = require('./controllers/parks_controllers.js');
+const parksController = require('./controllers/parks_controller.js');
 app.use(parksController);
 const userController = require('./controllers/users_controller.js')
 app.use('/users', userController)
