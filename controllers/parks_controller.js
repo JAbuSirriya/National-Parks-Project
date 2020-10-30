@@ -14,6 +14,10 @@ router.get('/', (req, res) => {
     res.render('parks/index.ejs', { currentUser: req.session.currentUser });
 })
 
+router.get('/allParks', (req, res) => {
+    res.render('/allParks.ejs')
+})
+
 router.get('/show', (req, res) => {
     res.render('parks/show.ejs', { currentUser: req.session.currentUser })
 })
@@ -21,9 +25,6 @@ router.get('/show', (req, res) => {
 router.get('/new', (req, res) => {
     res.render('parks/new.ejs', { currentUser: req.session.currentUser })
 })
-
-
-
 
 
 
