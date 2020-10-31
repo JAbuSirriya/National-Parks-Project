@@ -4,7 +4,7 @@ const router = express.Router();
 //Add a park to the users favorite page
 
 
-    //INDEX ROUTE // !!!DONE 
+    //INDEX ROUTE //IN PARKS CONTROLLER 
         //favorites page holding all favorites items
         // index.ejs
     // router.get('/favorites', (req,res) => {
@@ -15,20 +15,20 @@ const router = express.Router();
         //edit favorites list
         // EDIT.EJS
 
-    //DELETE ROUTE
+    //DELETE ROUTE //IN PARKS CONTROLLER 
         //delete item from favorites page
 
-    //DELETE ROUTE
+    //DELETE ROUTE //IN PARKS CONTROLLER 
         //delete all items on favorites page
 
 
     //comment on a favoite item
 
-    //NEW ROUTE and CREATE ROUTE
+    //NEW ROUTE and CREATE ROUTE //IN PARKS CONTROLELR
         //create/add a comment to each park
         // newComment.ejs
 
-    //EDIT and UPDATE ROUTES
+    //EDIT and UPDATE ROUTES //IN PARKS CONTROLLER
         //edit a comment 
         //editComment.ejs
     

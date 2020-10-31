@@ -49,5 +49,26 @@ router.get('/favorites', (req,res) => {
 // });
 
 
+//NEW ROUTE //CREATING A NEW COMMENT  //NEED API 
+router.get('/favorites/new', (req,res) => {
+    res.render('favorites/newComment.ejs')
+})
+
+//CREATE ROUTE //POSTING A NEW COMMENT ON THE FAVORITES PAGE //NEED API 
+router.post('/favorites', (req, res) => {
+    API.push(req.body)
+    res.redirect('/favorites')
+})
+
+//EDIT ROUTE //EDIT COMMENT //NEED API
+router.get('/favorites/:index/edit', (req, res) => {
+    res.render('favorites/editComment.ejs')
+})
+
+//UPDATE ROUTE //UPDATE COMMENT //NEED API
+router.put('/favorites/:index', (req, res) => {
+
+})
+
 
 module.exports = router;
