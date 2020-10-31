@@ -4,7 +4,33 @@
 <link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700|Montserrat:300,400,700&display=swap" rel="stylesheet">
 <!-- ============= STYLES ============= -->
 <link rel="stylesheet" href="/style.css">
-<div id='title'>
-    <h1 id='websiteTitle' >Website Title</h1>
+<div class='headcontainer'>
+    <div>
+        <h1 id='websiteTitle' >Website Title</h1>
+    </div>
+    <div class="loginSignupHomepage">
+        <div id="loginSignup">
+            <ul class="right">
+                <!-- <li><a href="/fruits/new">Create a new Fruit</a></li> -->
+                <% if (currentUser) { %>
+                <li>Welcome <%= currentUser.username %></li>
+                <li>
+                <form action="/sessions?_method=DELETE" method="POST">
+                    <input type="submit" value="Log Out" class="btn-small red" />
+                </form>
+                </li>
+                <% } else { %>
+                <li><a href="/users/new">Sign Up</a></li>
+                <li><a href="/sessions/new">Log In</a></li>
+                <% } %>
+            </ul>
+        </div>
+        <div id="homepage">
+            <button><a href="/">Home Page</a></button>
+        </div>
+    </div>
 </div>
+
+
+
 

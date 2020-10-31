@@ -5,9 +5,9 @@ body {
     border: royalblue;
 }
 
-#title {
+.headcontainer {
     background-color: chartreuse;
-    align-items: right
+    display: flex;
 }
 
 #websiteTitle {
@@ -15,9 +15,11 @@ body {
     display: flex;
 }
 
-.SignUpLogin {
-
+.loginSignupHomepage{
+    justify-content: right;
+    align-items: right;
 }
+
 
 #top, #bottom, #left, #right {
 	background: #a5ebff;
