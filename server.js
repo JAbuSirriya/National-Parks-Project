@@ -41,6 +41,8 @@ const userController = require('./controllers/users_controller.js')
 app.use('/users', userController)
 const sessionsController = require('./controllers/sessions_controller.js')
 app.use('/sessions', sessionsController)
+const favoritesController = require('./controllers/favorites_controller.js');
+app.use('/favorites', favoritesController)
 //___________________
 //Port
 //___________________
