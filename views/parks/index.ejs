@@ -7,8 +7,27 @@
 <div id="right"></div>
 <div id="top"></div>
 <div id="bottom"></div>
+<style>
+    .image {
+        max-width: 250px;
+        max-height: 250px;
+    }
+</style>
 <body>
     <h1>Index Page</h1>
     <button><a href="/show">Details of each National Park</a></button>
+    <form action="/search">
+    <input type="text" name='name'>
+    <input type="submit" value="submit">
+    </form>
+    <div>
+        <% for (let i=0; i<parks.length; i++) { %>
+            <div>
+                <h4><%= parks[i].parkname %></h4><br>
+                <h2><%= parks[i].url %></h2><br>
+                <a href="/<%= parks[i].id %>"><img class="image" src="<%=parks[i].image %>"></a>
+            </div>
+        <% } %> 
+    </div>
 </body>
 </html>

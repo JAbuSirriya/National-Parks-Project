@@ -1,5 +1,8 @@
 const express = require('express');
 const router = express.Router();
+const axios = require('axios').default;
+require('dotenv').config()
+const Parks = require('../models/parksData.js')
 
 // //Middleware
 // router.use((req, res, next) => {
@@ -10,10 +13,37 @@ const router = express.Router();
 //     }
 // })
 
+//API REQUEST AND ROUTE 
+router.get('/search', (req, res) => {
+    t = req.query.name
+    axios.get(`https://developer.nps.gov/api/v1/parks?q=${t}&api_key=${process.env.PARKKEY}`)
+  .then(function (response) {
+    console.log(response.data.data[0].url);
+    Parks.create({
+        parkname: response.data.data[0].fullName,
+        url: response.data.data[0].url,
+        description: response.data.data[0].description,
+        image: response.data.data[0].images[0].url
+    })
+  res.redirect('/')
+  })
+  .catch(function (error) {
+    // handle error
+    console.log(error);
+  })
+  .then(function () {
+    // always executed
+  });
+})
+
 
 //INDEX/MAIN PAGE 
 router.get('/', (req, res) => {
-    res.render('parks/index.ejs', { currentUser: req.session.currentUser });
+    Parks.find({}, (err, allParks) => {
+        res.render('parks/index.ejs', {
+            parks: allParks, currentUser: req.session.currentUser
+    })
+}) 
 })
 
 //DISPLAYS ALL NATIONAL PARKS ON ONE PAGE
@@ -69,6 +99,9 @@ router.get('/favorites/:index/edit', (req, res) => {
 router.put('/favorites/:index', (req, res) => {
 
 })
+
+//DELETE ROUTE //DELETE ONE COMMENT //NEED API
+router.delete('/')
 
 
 module.exports = router;
