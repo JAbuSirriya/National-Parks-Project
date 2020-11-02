@@ -13,12 +13,13 @@ const Parks = require('../models/parksData.js')
 //     }
 // })
 
+
 //API REQUEST AND ROUTE 
 router.get('/search', (req, res) => {
     t = req.query.name
     axios.get(`https://developer.nps.gov/api/v1/parks?q=${t}&api_key=${process.env.PARKKEY}`)
   .then(function (response) {
-    console.log(response.data.data[0].url);
+    console.log(response.data.data[0].fullName);
     Parks.create({
         parkname: response.data.data[0].fullName,
         url: response.data.data[0].url,
@@ -48,7 +49,11 @@ router.get('/', (req, res) => {
 
 //DISPLAYS ALL NATIONAL PARKS ON ONE PAGE
 router.get('/show', (req, res) => {
-    res.render('parks/show.ejs', { currentUser: req.session.currentUser })
+    Parks.find({}, (err, parks) => {
+        res.render('parks/show.ejs', {
+            allParks: parks, currentUser: req.session.currentUser 
+        })
+    })
 })
 
 //DISPLAY EACH PARK INDIVIDUALLY

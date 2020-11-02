@@ -3,8 +3,32 @@
     <head>
         <%- include('../partials/head.ejs') %>
     </head>
+<style>
+    .border {
+       border-style: solid;
+       border-color: black;
+       border-width: 5px;
+    }
+    
+    .image {
+        max-width: 250px;
+        max-height: 250px;
+    }
+</style>
 <body>
     <h1>All national parks list</h1>
+    <% for (let i = 0; i<allParks.length; i++) { %>
+    <div class="border">
+        <li> 
+            <a href="/<%= allParks[i].id %>">
+            <h3><%= allParks[i].parkname %></h3>
+            <h6><%= allParks[i].url %></h6><br>
+            <p><%= allParks[i].description %> </p>
+            <img class="image" src="<%=allParks[i].image %>">
+            </a>
+        </li> 
+    </div>
+    <% } %>
     <button> <a href="/"> Back to Index page</a> </button>
 </body>
 </html>

@@ -14,17 +14,18 @@
     }
 </style>
 <body>
-    <h1>Index Page</h1>
-    <button><a href="/show">Details of each National Park</a></button>
+    <h1>National Park Search</h1>
+    <button><a href="/show">Find all National Parks</a></button>
     <form action="/search">
-    <input type="text" name='name'>
+    <input type="text" name='name' value='Search national park'>
     <input type="submit" value="submit">
     </form>
     <div>
         <% for (let i=0; i<parks.length; i++) { %>
             <div>
-                <h4><%= parks[i].parkname %></h4><br>
-                <h2><%= parks[i].url %></h2><br>
+                <h3><%= parks[i].parkname %></h3>
+                <h6><%= parks[i].url %></h6><br>
+                <p><%= parks[i].description %> </p>
                 <a href="/<%= parks[i].id %>"><img class="image" src="<%=parks[i].image %>"></a>
             </div>
         <% } %> 
