@@ -6,13 +6,14 @@ body {
 }
 
 .headcontainer {
-    background-color: chartreuse;
+    background-color: #932432;
     display: flex;
 }
 
 #websiteTitle {
-    color: blueviolet;
+    color: #F3F3F3;
     display: flex;
+    font-size: 370%;
 }
 
 .loginSignupHomepage{
@@ -22,7 +23,7 @@ body {
 
 
 #top, #bottom, #left, #right {
-	background: #a5ebff;
+	background: darkolivegreen;
 	position: fixed;
     }
     
