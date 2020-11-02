@@ -5,7 +5,7 @@ const parksSchema = Schema({
   parkname: { type: String, unique: true, required: true },
   url: String,
   description: String,
-  image: String
+  image: String 
 
 })
 

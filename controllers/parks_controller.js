@@ -34,9 +34,9 @@ router.get('/seed', (req, res) => {
             console.log(response.data.data[i].fullName)
             Park.create({
                 parkname: response.data.data[i].fullName,
-                // url: response.data.data[i].url,
-                // description: response.data.data[i].description,
-                image: response.data.data[i].images[0].url
+                url: response.data.data[i].url,
+                description: response.data.data[i].description,
+                image: response.data.data[i].images.length > 0 ? response.data.data[i].images[0].url : ""
             })
         }
         
