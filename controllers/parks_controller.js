@@ -4,28 +4,28 @@ const axios = require('axios').default;
 require('dotenv').config()
 const Park = require('../models/parks.js')
 
-//API REQUEST AND ROUTE 
-router.get('/search', (req, res) => {
-    t = req.query.name
-    axios.get(`https://developer.nps.gov/api/v1/parks?q=${t}&api_key=${process.env.PARKKEY}`)
-  .then(function (response) {
-    console.log(response.data.data[0].fullName);
-    Parks.create({
-        parkname: response.data.data[0].fullName,
-        url: response.data.data[0].url,
-        description: response.data.data[0].description,
-        image: response.data.data[0].images[0].url
-    })
-  res.redirect('/')
-  })
-  .catch(function (error) {
-    // handle error
-    console.log(error);
-  })
-  .then(function () {
-    // always executed
-  });
-})
+// // //API REQUEST AND ROUTE 
+// router.get('/search', (req, res) => {
+//     t = req.query.name
+//     axios.get(`https://developer.nps.gov/api/v1/parks?q=${t}&api_key=${process.env.PARKKEY}`)
+//   .then(function (response) {
+//     console.log(response.data.data[0].fullName);
+//     Parks.create({
+//         parkname: response.data.data[0].fullName,
+//         url: response.data.data[0].url,
+//         description: response.data.data[0].description,
+//         image: response.data.data[0].images[0].url
+//     })
+//   res.redirect('/')
+//   })
+//   .catch(function (error) {
+//     // handle error
+//     console.log(error);
+//   })
+//   .then(function () {
+//     // always executed
+//   });
+// })
 
 router.get('/seed', (req, res) => {
     axios.get(`https://developer.nps.gov/api/v1/parks?limit=498&api_key=${process.env.PARKKEY}`)
@@ -36,7 +36,7 @@ router.get('/seed', (req, res) => {
                 parkname: response.data.data[i].fullName,
                 url: response.data.data[i].url,
                 description: response.data.data[i].description,
-                image: response.data.data[i].images.length > 0 ? response.data.data[i].images[0].url : ""
+                image: response.data.data[i].images.length > 0 ? response.data.data[i].images[0].url : "https://cdn.pixabay.com/photo/2015/01/28/23/35/landscape-615429_960_720.jpg"
             })
         }
         
@@ -78,7 +78,7 @@ router.get('/seed', (req, res) => {
 
 //INDEX/MAIN PAGE 
 router.get('/', (req, res) => {
-    Park.find({}, (err, allParks) => {
+    Park.find(req.params.id, (err, allParks) => {
         res.render('parks/index.ejs', {
             parks: allParks, currentUser: req.session.currentUser
     })
@@ -96,9 +96,14 @@ router.get('/show', (req, res) => {
 
 
 //DISPLAY EACH PARK INDIVIDUALLY
-router.get('/show:id', (req, res) => {
-    res.send('')
-})
+router.get('/:id', (req, res) => {
+    Park.findById(req.params.id, (err, foundPark) => {
+        console.log(foundPark)
+            res.render('parks/individualShow.ejs', {
+                park: foundPark, currentUser: req.session.currentUser 
+            })
+        }
+    )})
 
 
 
