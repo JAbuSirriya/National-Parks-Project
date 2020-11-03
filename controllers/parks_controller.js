@@ -3,6 +3,7 @@ const router = express.Router();
 const axios = require('axios').default;
 require('dotenv').config()
 const Park = require('../models/parks.js')
+const Comment = require('../models/comment.js')
 
 // // //API REQUEST AND ROUTE 
 // router.get('/search', (req, res) => {
@@ -85,6 +86,7 @@ router.get('/', (req, res) => {
 }) 
 })
 
+
 //DISPLAYS ALL NATIONAL PARKS ON ONE PAGE
 router.get('/show', (req, res) => {
     Park.find({}, (err, parks) => {
@@ -98,12 +100,26 @@ router.get('/show', (req, res) => {
 //DISPLAY EACH PARK INDIVIDUALLY
 router.get('/:id', (req, res) => {
     Park.findById(req.params.id, (err, foundPark) => {
-        console.log(foundPark)
+        Comment.find({parkname: foundPark.id}, (err, foundComment) => {
             res.render('parks/individualShow.ejs', {
-                park: foundPark, currentUser: req.session.currentUser 
+                park: foundPark, currentUser: req.session.currentUser, 
+                comment: foundComment
             })
-        }
-    )})
+        })  
+        })
+    })
+
+
+ //CREATE ROUTE FOR COMMENT
+router.post('/:id', (req, res) => {
+    req.body.parkname = req.params.id
+    post.create(req.body, (err, wrotePost) => {
+        if (err) {
+            console.log(err)
+        } else {
+            res.redirect('back')}
+    })
+})
 
 
 

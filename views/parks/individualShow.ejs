@@ -12,11 +12,18 @@
 <body>
     <h2>Individual show page</h2>
     <div>
-        
         <h3><%= park.parkname %></h3>
         <h6><%= park.url %></h6><br>
         <p><%= park.description %> </p>
         <a href="/<%= park.id %>"><img class="image" src="<%=park.image %>"></a>
+    </div>
+    <h2>Leave a Comment</h2>
+    <% for (i=0; i<comment.length; i++) { %>
+    <h5><%=comment[i].subject %></h5>
+    <%= comment[i].body %>
+    <% } %>
+    <div>
+        <h3></h3>
     </div>
 </body>
 </html>
