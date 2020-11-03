@@ -18,12 +18,20 @@
         <a href="/<%= park.id %>"><img class="image" src="<%=park.image %>"></a>
     </div>
     <h2>Leave a Comment</h2>
-    <% for (i=0; i<comment.length; i++) { %>
-    <h5><%=comment[i].subject %></h5>
-    <%= comment[i].body %>
+    <% for (i=0; i< comment.length; i++) { %>
+    <h5><%=comment[i].commentTitle %></h5>
+    <%= comment[i].timeOfYear %>
+    <%= comment[i].description %>
     <% } %>
     <div>
-        <h3></h3>
+        <h3>Comment on this Park</h3>
+        <form action="/<%= park.id %>" method="POST" >
+            Title of Post <input type="text" name="commentTitle" placeholder="Comment Title"><br>
+            What time of year did you visit?: <input type="text"  name="timeOfYear" placeholder="August 2020"><br>
+            Describe your experience at the park: <input type="text"  name="description" ><br>
+            <input type="submit" name="" value="Add Comment">
+        </form>
+        <form action="/parks/<%="></form>
     </div>
 </body>
 </html>

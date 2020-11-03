@@ -97,10 +97,23 @@ router.get('/show', (req, res) => {
 })
 
 
+ //CREATE ROUTE FOR COMMENT
+ router.post('/:id', (req, res) => {
+    req.body.park = req.params.id
+    Comment.create(req.body, (err, wrotePost) => {
+        if (err) {
+            console.log(err)
+        } else {
+            res.redirect('back')}
+    })
+})
+
+
 //DISPLAY EACH PARK INDIVIDUALLY
 router.get('/:id', (req, res) => {
     Park.findById(req.params.id, (err, foundPark) => {
-        Comment.find({parkname: foundPark.id}, (err, foundComment) => {
+        Comment.find({park: foundPark.id}, (err, foundComment) => {
+            console.log(foundComment)
             res.render('parks/individualShow.ejs', {
                 park: foundPark, currentUser: req.session.currentUser, 
                 comment: foundComment
@@ -110,14 +123,10 @@ router.get('/:id', (req, res) => {
     })
 
 
- //CREATE ROUTE FOR COMMENT
-router.post('/:id', (req, res) => {
-    req.body.parkname = req.params.id
-    post.create(req.body, (err, wrotePost) => {
-        if (err) {
-            console.log(err)
-        } else {
-            res.redirect('back')}
+//DELETE ROUTE 
+router.get('/:id', (req, res) => {
+    Park.findByIdAndDelete(req.params.id, { useFindAndModify: false}, (err, data) => {
+        res.redirect('/')
     })
 })
 

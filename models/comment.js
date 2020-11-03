@@ -2,7 +2,8 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const commentSchema = Schema({
-  parkName: { type: String, unique: true, required: true },
+  park: String,
+  commentTitle: { type: String, unique: true, required: true },
   timeOfYear: String,
   description: String,
 
