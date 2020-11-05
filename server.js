@@ -36,7 +36,7 @@ app.use(
 
 //CONTROLLER
 const parksController = require('./controllers/parks_controller.js');
-app.use(parksController);
+app.use("/", parksController);
 const userController = require('./controllers/users_controller.js')
 app.use('/users', userController)
 const sessionsController = require('./controllers/sessions_controller.js')

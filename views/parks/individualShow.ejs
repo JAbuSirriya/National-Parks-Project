@@ -22,6 +22,9 @@
     <h5><%=comment[i].commentTitle %></h5>
     <%= comment[i].timeOfYear %>
     <%= comment[i].description %>
+    <form action="/<%= comment[i].id %>?_method=DELETE" method="POST">
+    <input type="submit" value="Delete Comment">
+    </form>
     <% } %>
     <div>
         <h3>Comment on this Park</h3>

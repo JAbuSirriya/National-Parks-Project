@@ -41,4 +41,6 @@ body {
     #top { top: 0; }
     #bottom { bottom: 0; }
 
-    
+    .btn btn-primary {
+        display: inline-flex;
+    }

@@ -1,4 +1,5 @@
 const express = require('express');
+const mongoose =  require('mongoose');
 const router = express.Router();
 const axios = require('axios').default;
 require('dotenv').config()
@@ -111,22 +112,34 @@ router.get('/show', (req, res) => {
 
 //DISPLAY EACH PARK INDIVIDUALLY
 router.get('/:id', (req, res) => {
-    Park.findById(req.params.id, (err, foundPark) => {
-        Comment.find({park: foundPark.id}, (err, foundComment) => {
-            console.log(foundComment)
-            res.render('parks/individualShow.ejs', {
-                park: foundPark, currentUser: req.session.currentUser, 
-                comment: foundComment
-            })
-        })  
+    parkID = req.params.id
+    Park.findById(parkID, (err, foundPark) => {
+          if(err){
+              console.log(err)
+          }else{
+        Comment.find({park: mongoose.Types.ObjectId(foundPark.id)}, ( err, foundComment) => {
+         
+           res.render('parks/individualShow.ejs', {
+                    park: foundPark, 
+                    comment: foundComment,
+                    currentUser: req.session.currentUser
+                })
+        })
+    }
         })
     })
 
 
-//DELETE ROUTE 
-router.get('/:id', (req, res) => {
-    Park.findByIdAndDelete(req.params.id, { useFindAndModify: false}, (err, data) => {
-        res.redirect('/')
+//DELETE COMMENT ROUTE 
+router.delete('/:id', (req, res) => {
+    console.log(req.params.id)
+    Comment.findByIdAndDelete(req.params.id, { useFindAndModify: false}, (err, foundPark) => {
+        if(err){
+            console.log(err)
+        }else{
+            res.redirect('/')
+        }
+       
     })
 })
 

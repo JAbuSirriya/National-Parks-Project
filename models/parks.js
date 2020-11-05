@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const parksSchema = Schema({
-  parkname: { type: String, unique: true, required: true },
+  parkname: { type: String },
   url: String,
   description: String,
   image: String 
