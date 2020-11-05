@@ -7,6 +7,9 @@ const Park = require('../models/parks.js')
 const Comment = require('../models/comment.js');
 const { update } = require('../models/parks.js');
 
+router.get('/favicon.ico', (req, res, next) =>{
+    res.status(404).send('No favicon here')
+})
 
 router.get('/seed', (req, res) => {
     axios.get(`https://developer.nps.gov/api/v1/parks?limit=498&api_key=${process.env.PARKKEY}`)
