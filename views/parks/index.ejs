@@ -8,6 +8,12 @@
 <div id="top"></div>
 <div id="bottom"></div>
 <style>
+    .border {
+       border-style: solid;
+       border-color: black;
+       border-width: 5px;
+    }
+    
     .image {
         max-width: 250px;
         max-height: 250px;
@@ -22,7 +28,7 @@
     <button><a href="/">Clear Search</a></button>
     <div>
         <% for (let i=0; i<parks.length; i++) { %>
-            <div>
+            <div class="border">
                 <h3><%= parks[i].parkname %></h3>
                 <h6><%= parks[i].url %></h6><br>
                 <p><%= parks[i].description %> </p>
