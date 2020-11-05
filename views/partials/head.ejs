@@ -7,13 +7,9 @@
 <!-- ============= STYLES ============= -->
 <link rel="stylesheet" href="/style.css">
 <div class='headcontainer'>
-    <div>
         <h1 id='websiteTitle' >Outdoor Exploration</h1>
-    </div>
-    <div class="loginSignupHomepage">
         <div id="loginSignup">
-            <ul class="right">
-                <!-- <li><a href="/fruits/new">Create a new Fruit</a></li> -->
+            <ul class="right" style="float: right;">
                 <% if (currentUser) { %>
                 <li>Welcome <%= currentUser.username %></li>
                 <li> <a href="/favorites">Favorites</a></li>
@@ -22,16 +18,17 @@
                     <input type="submit" value="Log Out" class="btn-small red" />
                 </form>
                 <% } else { %>
-                <button type="button" class="btn btn-primary"> <a href="/users/new">Sign Up</a></button>
-                <button type="button" class="btn btn-primary" ><a href="/sessions/new">Log In</a></button>
+                <button type="button" class="btn-primary"> <a href="/users/new">Sign Up</a></button>
+                <button type="button" class="btn-primary" ><a href="/sessions/new">Log In</a></button>
                 <% } %>
+                <div id="homepage">
+                    <button><a href="/">Home Page</a></button>
+                </div>
             </ul>
-        </div>
-        <div id="homepage">
-            <button><a href="/">Home Page</a></button>
         </div>
     </div>
 </div>
+
 
 
 

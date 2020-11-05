@@ -16,9 +16,10 @@ body {
     font-size: 370%;
 }
 
-.loginSignupHomepage{
-    justify-content: right;
-    align-items: right;
+#loginSignup{
+    display: inline-flex;
+    flex-wrap: wrap;
+    float: right;
 }
 
 
@@ -40,7 +41,3 @@ body {
     }
     #top { top: 0; }
     #bottom { bottom: 0; }
-
-    .btn btn-primary {
-        display: inline-flex;
-    }

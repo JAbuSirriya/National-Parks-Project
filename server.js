@@ -24,6 +24,7 @@ app.use(express.json());// returns middleware that only parses JSON - may or may
 app.use(methodOverride('_method'));// allow POST, PUT and DELETE from a form
 
 
+
 //LOGIN AND SIGN UP/SESSIONS MIDDLEWARE
 app.use(
     session({
@@ -41,8 +42,7 @@ const userController = require('./controllers/users_controller.js')
 app.use('/users', userController)
 const sessionsController = require('./controllers/sessions_controller.js')
 app.use('/sessions', sessionsController)
-const favoritesController = require('./controllers/favorites_controller.js');
-app.use('/favorites', favoritesController)
+
 //___________________
 //Port
 //___________________
