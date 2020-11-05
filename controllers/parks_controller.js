@@ -132,6 +132,7 @@ router.get('/:id', (req, res) => {
 
 
 
+
 // FAVORITES CONTROLLER
 // INDEX 
 router.get('/favorites', (req,res) => {
