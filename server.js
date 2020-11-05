@@ -12,14 +12,14 @@ require('dotenv').config();
 //___________________
 //Middleware
 //___________________
-
+// How to connect to the database either via heroku or locally
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/'+ 'project_2';
 // Connect to Mongo
 mongoose.connect(MONGODB_URI,  { useNewUrlParser: true});
 //___________________
 //Database
 //___________________
-// How to connect to the database either via heroku or locally
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/'+ 'project_2';
+
 
 
 // Error / success
