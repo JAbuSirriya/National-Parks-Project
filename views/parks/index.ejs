@@ -16,10 +16,11 @@
 <body>
     <h1>National Park Search</h1>
     <button><a href="/show">Find all National Parks</a></button>
-    <form action="/search">
-        <input type="text" id='searchInput' name='name' onkeyup='searchFunction()' value='Search national park'>
+    <form action="/">
+        <input type="text" id='searchInput' name='searchInput' placeholder='Search national park' value="<%=searchInput%>">
         <input type="submit" value="submit">
     </form>
+    <button><a href="/">Clear Search</a></button>
     <div>
         <% for (let i=0; i<parks.length; i++) { %>
             <div>
@@ -30,17 +31,5 @@
             </div>
         <% } %> 
     </div>
-    <script>
-        const searchInput = document.getElementById("searchInput");
-        const rows = document.querySelectorAll("h3 h6 p a");
-        searchInput.addEventListener("keyup", function (event) {
-          const q = event.target.value.toLowerCase();
-          rows.forEach((row) => {
-            row.querySelector("td").textContent.toLowerCase().startsWith(q)
-              ? (row.style.display = "table-row")
-              : (row.style.display = "none");
-          });
-        });
-      </script>
 </body>
 </html>

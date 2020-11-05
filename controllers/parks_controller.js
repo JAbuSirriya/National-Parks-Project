@@ -4,7 +4,8 @@ const router = express.Router();
 const axios = require('axios').default;
 require('dotenv').config()
 const Park = require('../models/parks.js')
-const Comment = require('../models/comment.js')
+const Comment = require('../models/comment.js');
+const { update } = require('../models/parks.js');
 
 // // //API REQUEST AND ROUTE 
 // router.get('/search', (req, res) => {
@@ -80,22 +81,29 @@ router.get('/seed', (req, res) => {
 
 //INDEX/MAIN PAGE 
 router.get('/', (req, res) => {
-    Park.find(req.params.id, (err, allParks) => {
-        res.render('parks/index.ejs', {
+    console.log(req.query.searchInput)
+    let searchOptions = {}
+    const searchInput = req.query.searchInput
+    if (searchInput) {
+        searchOptions.parkname = {"$regex":req.query.searchInput,"$options":"i"}
+    } 
+    Park.find(searchOptions, (err, allParks) => {
+        res.render('parks/index.ejs',  { 
+            searchInput: req.query.searchInput,
             parks: allParks, currentUser: req.session.currentUser
     })
 }) 
 })
 
 
-//DISPLAYS ALL NATIONAL PARKS ON ONE PAGE
-router.get('/show', (req, res) => {
-    Park.find({}, (err, parks) => {
-        res.render('parks/show.ejs', {
-            allParks: parks, currentUser: req.session.currentUser 
-        })
-    })
-})
+// //DISPLAYS ALL NATIONAL PARKS ON ONE PAGE
+// router.get('/show', (req, res) => {
+//     Park.find({}, (err, parks) => {
+//         res.render('parks/show.ejs', {
+//             allParks: parks, currentUser: req.session.currentUser 
+//         })
+//     })
+// })
 
 
  //CREATE ROUTE FOR COMMENT
@@ -119,7 +127,6 @@ router.get('/:id', (req, res) => {
               console.log(err)
           }else{
         Comment.find({park: mongoose.Types.ObjectId(foundPark.id)}, ( err, foundComment) => {
-         
            res.render('parks/individualShow.ejs', {
                     park: foundPark, 
                     comment: foundComment,
@@ -131,11 +138,22 @@ router.get('/:id', (req, res) => {
     })
 
 
+//UPDATE COMMENT ROUTE
+router.put('/:id', (req, res) => {
+    Comment.findByIdAndUpdate(req.params.id, req. body, {new: true}, (err, updateComment) => {
+        res.redirect(updateComment.park), {
+            currentUser: req.session.currentUser
+        }
+    })
+})
+
 //EDIT COMMENT ROUTE
 router.get('/:id/edit', (req, res) => {
     Comment.findById(req.params.id, (err, foundComment) => {
-        res.render('parks/individualShow.ejs', {
-            comment: foundComment
+        console.log(foundComment)
+        res.render('parks/edit.ejs', {
+            comment: foundComment,
+            currentUser: req.session.currentUser
         })
     })
 })
@@ -153,6 +171,9 @@ router.delete('/:id', (req, res) => {
        
     })
 })
+
+
+
 
 
 
