@@ -110,6 +110,7 @@ router.get('/show', (req, res) => {
 })
 
 
+
 //DISPLAY EACH PARK INDIVIDUALLY
 router.get('/:id', (req, res) => {
     parkID = req.params.id
@@ -128,6 +129,16 @@ router.get('/:id', (req, res) => {
     }
         })
     })
+
+
+//EDIT COMMENT ROUTE
+router.get('/:id/edit', (req, res) => {
+    Comment.findById(req.params.id, (err, foundComment) => {
+        res.render('parks/individualShow.ejs', {
+            comment: foundComment
+        })
+    })
+})
 
 
 //DELETE COMMENT ROUTE 
