@@ -13,6 +13,20 @@ require('dotenv').config();
 //Middleware
 //___________________
 
+// Connect to Mongo
+mongoose.connect(MONGODB_URI,  { useNewUrlParser: true});
+//___________________
+//Database
+//___________________
+// How to connect to the database either via heroku or locally
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/'+ 'project_2';
+
+
+// Error / success
+db.on('error', (err) => console.log(err.message + ' is Mongod not running?'));
+db.on('connected', () => console.log('mongo connected: ', MONGODB_URI));
+db.on('disconnected', () => console.log('mongo disconnected'));
+
 //use public folder for static assets
 app.use(express.static('public'));
 
@@ -49,22 +63,10 @@ app.use('/sessions', sessionsController)
 // Allow use of Heroku's port or your own local port, depending on the environment
 const PORT = process.env.PORT || 3000;
 
-//___________________
-//Database
-//___________________
-// How to connect to the database either via heroku or locally
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/'+ 'project_2';
 
-// Connect to Mongo
-mongoose.connect(MONGODB_URI ,  { useNewUrlParser: true});
 
-// Error / success
-db.on('error', (err) => console.log(err.message + ' is Mongod not running?'));
-db.on('connected', () => console.log('mongo connected: ', MONGODB_URI));
-db.on('disconnected', () => console.log('mongo disconnected'));
-
-// open the connection to mongo
-db.on('open' , ()=>{});
+// // open the connection to mongo
+// db.on('open' , ()=>{});
 
 
 
