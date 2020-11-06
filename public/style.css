@@ -5,9 +5,12 @@ body {
     border: royalblue;
 }
 
+/* HEAD CONTAINER */
 .headcontainer {
     background-color: #932432;
     display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
 }
 
 #websiteTitle {
@@ -16,6 +19,8 @@ body {
     font-size: 370%;
 }
 
+
+/* SIGNUP LOGIN AND HOMEPAGE BUTTONS */
 .btn-group, .btn-secondary, .btn-primary {
     display: inline-flex;
     flex-wrap: wrap;
@@ -26,7 +31,6 @@ body {
 border: 1px ridge black;
 width: 120px;
 height: 29px;
-
 }
 
 .btn-secondary, .btn-primary:hover, .buttonText:hover {
@@ -41,7 +45,6 @@ height: 29px;
     color: black;
     font-weight: bold;
     text-decoration: none;
-
 }
 
 a:hover {
@@ -49,9 +52,39 @@ a:hover {
   }
 
 
+/* NATIONAL PARK SEARCH, SEARCHBAR, SUBMIT & CLEAR BUTTONS */
+.searchBar {
+    display: flex;
+    justify-content: center;
+    
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+}
+
+.searchButton {
+    margin: 4px 5px 10px 5px ;
+}
+
+#submitButton {
+    font-weight: bold;
+    color: white;
+    background-color: darkslategrey;
+
+}
+
+#clearSearch, #clearSearch:link, #clearSearch:visited, #clearSearch:hover {
+    font-weight: bold;
+    color: white;
+    background-color: #932432;
+    text-decoration: none;
+}
+
 
 #top, #bottom, #left, #right {
-	background: #BC986A;
+	background: #5d5c61;
     position: fixed;
     }
     

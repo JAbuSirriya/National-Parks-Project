@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<!-- ============= STYLES ============= -->
+<link rel="stylesheet" href="/style.css">
 <head>
     <%- include('../partials/head.ejs') %>
 </head>
@@ -21,23 +25,14 @@
 </style>
 <body>
     <div class="searchBarAndTitle">
-        <h1>National Park Search</h1>
-    <div class="searchBar">
-        <form action="/">
-            <input type="text" id='searchInput' name='searchInput' placeholder='Search national park' value="<%=searchInput%>">
-            <input type="submit" value="submit">
-        </form>
-        <button><a href="/">Clear Search</a></button>
-    </div>
-        <div> 
-    </div>
-    <h1>National Park Search</h1>
-    <div>
-        <form action="/">
-            <input type="text" id='searchInput' name='searchInput' placeholder='Search national park' value="<%=searchInput%>">
-            <input type="submit" value="submit">
-        </form>
-        <button><a href="/">Clear Search</a></button>
+        <h2 class="title">National Park Search</h2>
+        <div class="searchBar">
+            <form action="/">
+                <input class="search" type="text" id='searchInput' name='searchInput' placeholder='Search National Park' value="<%=searchInput%>">
+                <input class="searchButton"  id="submitButton" type="submit" value="Submit">
+            </form>
+            <button class="searchButton" id="clearSearch"><a  href="/">Clear Search</a></button>
+        </div>
     </div>
         <div> 
         <% for (let i=0; i<parks.length; i++) { %>
