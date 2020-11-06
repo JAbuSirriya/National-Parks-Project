@@ -75,12 +75,23 @@ a:hover {
 
 }
 
-#clearSearch, #clearSearch:link, #clearSearch:visited, #clearSearch:hover {
+#clearSearch {
     font-weight: bold;
     color: white;
     background-color: #932432;
     text-decoration: none;
 }
+
+
+/* EACH INDIVIDUAL PARK INFO */
+.parkContent {
+    display: flex;
+    justify-content: center;
+    margin-left: 33px;
+    margin-right: 33px;
+    margin-bottom: 18px
+}
+
 
 
 #top, #bottom, #left, #right {

@@ -19,8 +19,8 @@
     }
     
     .image {
-        max-width: 250px;
-        max-height: 250px;
+        max-width: 275px;
+        max-height: 275px;
     }
 </style>
 <body>
@@ -31,16 +31,15 @@
                 <input class="search" type="text" id='searchInput' name='searchInput' placeholder='Search National Park' value="<%=searchInput%>">
                 <input class="searchButton"  id="submitButton" type="submit" value="Submit">
             </form>
-            <button class="searchButton" id="clearSearch"><a  href="/">Clear Search</a></button>
+            <button class="searchButton" id="clearSearch" ><a id="clearSearch" href="/">Clear Search</a></button>
         </div>
     </div>
         <div> 
         <% for (let i=0; i<parks.length; i++) { %>
             <div class="border">
-                <h3><%= parks[i].parkname %></h3>
-                <h6><%= parks[i].url %></h6><br>
-                <p><%= parks[i].description %> </p>
-                <a href="/<%= parks[i].id %>"><img class="image" src="<%=parks[i].image %>"></a>
+                <h3 class="parkContent" class="parkName" ><%= parks[i].parkname %></h3>
+                <p class="parkContent" ><%= parks[i].description %> </p>
+                <a class="parkContent" href="/<%= parks[i].id %>"><img class="image" class="parkImage" src="<%=parks[i].image %>"></a>
             </div>
         <% } %> 
     </div>
