@@ -9,7 +9,7 @@
 <div class='headcontainer'>
         <h1 id='websiteTitle' >Outdoor Exploration</h1>
         <div id="loginSignup">
-            <ul class="right" style="float: right">
+            <ul>
                 <% if (currentUser) { %>
                 <li>Welcome <%= currentUser.username %></li>
                 <li> <a href="/favorites">Favorites</a></li>
@@ -18,10 +18,10 @@
                     <input type="submit" value="Log Out" class="btn-small red" />
                 </form>
                 <% } else { %>
-                <div class="btn-group" role="group">
-                <button type="button" class="btn btn-secondary"> <a href="/users/new">Sign Up</a></button>
-                <button type="button" class="btn btn-secondary" ><a href="/sessions/new">Log In</a></button>
-                <button type="button" class="btn btn-primary"><a href="/">Home Page</a></button>
+                <div class="btn-group float-right row col-md-5" role="group">
+                <button type="button" class="btn btn-secondary" ><a class="buttonText" href="/users/new" >Sign Up</a></button>
+                <button type="button" class="btn btn-secondary" ><a class="buttonText" href="/sessions/new">Log In</a></button>
+                <button type="button" class="btn btn-primary" ><a class="buttonText" href="/">Home Page</a></button>
                 </div>
                 <% } %>
             </ul>

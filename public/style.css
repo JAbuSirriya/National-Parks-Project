@@ -19,28 +19,52 @@ body {
 .btn-group, .btn-secondary, .btn-primary {
     display: inline-flex;
     flex-wrap: wrap;
-    float: right;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 1git 4px;
-    font-weight: normal;
+    float: right;   
 }
+
+.btn-secondary, .btn-primary {
+border: 1px ridge black;
+width: 120px;
+height: 29px;
+
+}
+
+.btn-secondary, .btn-primary:hover, .buttonText:hover {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    box-shadow: none;
+    opacity: 1.0;
+    text-decoration: none;
+}
+
+.buttonText {
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+
+}
+
+a:hover {
+    color: black;
+  }
+
 
 
 #top, #bottom, #left, #right {
-	background: darkolivegreen;
-	position: fixed;
+	background: #BC986A;
+    position: fixed;
     }
     
 #left, #right {
     top: 0; bottom: 0;
-    width: 20px;
+    width: 21px;
     }
     #left { left: 0; }
     #right { right: 0; }
     
 #top, #bottom {
     left: 0; right: 0;
-    height: 22px;
+    height: 10.5px;
     }
     #top { top: 0; }
     #bottom { bottom: 0; }

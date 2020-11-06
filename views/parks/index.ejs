@@ -20,13 +20,26 @@
     }
 </style>
 <body>
+    <div class="searchBarAndTitle">
+        <h1>National Park Search</h1>
+    <div class="searchBar">
+        <form action="/">
+            <input type="text" id='searchInput' name='searchInput' placeholder='Search national park' value="<%=searchInput%>">
+            <input type="submit" value="submit">
+        </form>
+        <button><a href="/">Clear Search</a></button>
+    </div>
+        <div> 
+    </div>
     <h1>National Park Search</h1>
-    <form action="/">
-        <input type="text" id='searchInput' name='searchInput' placeholder='Search national park' value="<%=searchInput%>">
-        <input type="submit" value="submit">
-    </form>
-    <button><a href="/">Clear Search</a></button>
     <div>
+        <form action="/">
+            <input type="text" id='searchInput' name='searchInput' placeholder='Search national park' value="<%=searchInput%>">
+            <input type="submit" value="submit">
+        </form>
+        <button><a href="/">Clear Search</a></button>
+    </div>
+        <div> 
         <% for (let i=0; i<parks.length; i++) { %>
             <div class="border">
                 <h3><%= parks[i].parkname %></h3>
