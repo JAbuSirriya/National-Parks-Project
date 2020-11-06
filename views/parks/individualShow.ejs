@@ -5,8 +5,8 @@
     </head>
     <style>
     .image {
-        max-width: 250px;
-        max-height: 250px;
+        max-width: 600px;
+        max-height: 600px;
     }
     </style>
     
@@ -14,14 +14,14 @@
     <div id="right"></div>
     <div id="top"></div>
     <div id="bottom"></div>
-<body>
+<body class="showBackground">
     <div>
-        <h3><%= park.parkname %></h3>
-        <h6><%= park.url %></h6><br>
-        <p><%= park.description %> </p>
-        <a href="/<%= park.id %>"><img class="image" src="<%=park.image %>"></a>
+        <h1 class="parkContent" class="parkName"><%= park.parkname %></h1>
+        <h6 class="parkContent"> To find out more information about this park please visit:<a class="parkContent"><%= park.url %></h6></a><br> 
+        <p class="parkContent"><%= park.description %> </p>
+        <a class="parkContent" class="parkImage" href="/<%= park.id %>"><img class="image" src="<%=park.image %>"></a>
     </div>
-    <h2>Leave a Comment</h2>
+    <h4 class="commentInfo">Leave a Comment</h4>
     <% for (i=0; i< comment.length; i++) { %>
     <h5><%=comment[i].commentTitle %></h5>
     <%= comment[i].timeOfYear %>
@@ -34,12 +34,11 @@
     </form>
     <% } %>
     <div>
-        <h3>Comment on this Park</h3>
         <form action="/<%= park.id %>" method="POST" >
-            Title of Post <input type="text" name="commentTitle" placeholder="Comment Title"><br>
-            What time of year did you visit?: <input type="text"  name="timeOfYear" placeholder="August 2020"><br>
-            Describe your experience at the park: <input type="text"  name="description" ><br>
-            <input type="submit" name="" value="Add Comment">
+            Title of Post <input class="commentInfo" type="text" name="commentTitle" placeholder="Comment Title"><br>
+            What time of year did you visit?: <input class="commentInfo" type="text"  name="timeOfYear" placeholder="August 2020"><br>
+            Describe your experience at the park: <input class="commentInfo" type="text"  name="description" ><br>
+            <input class="commentInfo" type="submit" name="" value="Add Comment">
         </form>
     </div>
 </body>

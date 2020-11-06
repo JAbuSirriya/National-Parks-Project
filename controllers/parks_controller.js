@@ -61,7 +61,7 @@ router.get('/', (req, res) => {
 
 
 
-//DISPLAY EACH PARK INDIVIDUALLY
+//SHOW ROUTE //DISPLAY EACH PARK INDIVIDUALLY
 router.get('/:id', (req, res) => {
     parkID = req.params.id
     Park.findById(parkID, (err, foundPark) => {

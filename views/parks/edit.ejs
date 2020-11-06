@@ -3,7 +3,7 @@
     <head>
         <%- include('../partials/head.ejs') %>
     </head>
-<body>
+<body class="showBackground">
     <h1>Edit Comment</h1>
     <form action="/<%= comment.id %>?_method=PUT" method="POST">
     Title of Post <input type="text" name="commentTitle" value="<%=comment.commentTitle %>" ><br>
