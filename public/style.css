@@ -94,9 +94,8 @@ a:hover {
 
 .commentInfo {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
-    
+    margin: 0 auto; 
 }
 
 .parkName {
@@ -104,13 +103,17 @@ a:hover {
     margin-bottom: 35px;
 }
 
-.imageOfPark {
-    margin-bottom: 50px;
-}
-
 .showBackground {
     background-color: #E3DEC1;
 }
+
+.userCommentContent {
+    display: list-item;
+    justify-content: center;
+    display: flex;
+    margin: 0 auto;
+}
+
 
 #top, #bottom, #left, #right {
 	background: #5d5c61;

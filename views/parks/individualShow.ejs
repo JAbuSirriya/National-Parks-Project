@@ -7,6 +7,8 @@
     .image {
         max-width: 600px;
         max-height: 600px;
+        margin-bottom: 35px;
+        margin-top: 35px;
     }
     </style>
     
@@ -19,23 +21,26 @@
         <h1 class="parkContent" class="parkName"><%= park.parkname %></h1>
         <h6 class="parkContent"> To find out more information about this park please visit:<a class="parkContent"><%= park.url %></h6></a><br> 
         <p class="parkContent"><%= park.description %> </p>
-        <a class="parkContent" class="parkImage" href="/<%= park.id %>"><img class="image" src="<%=park.image %>"></a>
+        <a class="parkContent" href="/<%= park.id %>"><img class="image"src="<%=park.image %>"></a>
     </div>
-    <h4 class="commentInfo">Leave a Comment</h4>
     <% for (i=0; i< comment.length; i++) { %>
-    <h5><%=comment[i].commentTitle %></h5>
-    <%= comment[i].timeOfYear %>
-    <%= comment[i].description %>
-    </form>
+    <div class="userCommentContent" style="margin-bottom: 60px; margin-top: 35px;">
+        <h5 class="userCommentContent">POST TITLE: <%=comment[i].commentTitle %></h5><br>
+        <h5 class="userCommentContent">VISTED PARK IN: <%= comment[i].timeOfYear %></h5><br>
+        <h5 class="userCommentContent">EXPERIENCE AT THE PARK: <%= comment[i].description %></h5>
+    <form>
     <button><a href="/<%=comment[i].id%>/edit">Edit Comment</a></button>
     </form>
     <form action="/<%= comment[i].id %>?_method=DELETE" method="POST">
-    <input type="submit" value="Delete Comment">
+        <input type="submit" value="Delete Comment">
     </form>
+    </div>
+    
     <% } %>
-    <div>
+    <h4 class="commentInfo" style="margin-bottom: 20px; font-weight: bolder ">Leave a Comment</h4>
+    <div class="commentInfo">
         <form action="/<%= park.id %>" method="POST" >
-            Title of Post <input class="commentInfo" type="text" name="commentTitle" placeholder="Comment Title"><br>
+            Title of Post: <input class="commentInfo" type="text" name="commentTitle" placeholder="Comment Title"><br>
             What time of year did you visit?: <input class="commentInfo" type="text"  name="timeOfYear" placeholder="August 2020"><br>
             Describe your experience at the park: <input class="commentInfo" type="text"  name="description" ><br>
             <input class="commentInfo" type="submit" name="" value="Add Comment">
